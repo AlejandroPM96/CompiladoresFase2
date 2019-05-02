@@ -1,0 +1,15 @@
+	<rule group="Failed Login Attempts from the Same Source" id ="1" name ="Authentication Rule 1">
+		<test group="subcheck-Validation" id="1" operator="AND">
+			<properties>
+				<property id="1" name="subcheck-Validation" qualifier="ANY" value="subcheck-Validation Failed"/>
+			</properties>
+		</test>
+		<test group="username and source ip" id="2" operator="AND">
+			<properties>
+				<property id="1" name="username" value="DIFFERENT"/>
+				<property id="2" name="source ip" value="SAME"/>
+				<property count="&gt;" id="3" name="source ip" value="SAME"/>
+				<property id="4" name="time" unit="minutes" value="2"/>
+			</properties>
+		</test>
+	</rule>

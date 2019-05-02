@@ -20,19 +20,11 @@ ID=19
 WS=20
 IP=21
 'if'=1
-<<<<<<< Updated upstream
-'for'=2
-'Login Attempts from the Same Source'=3
-'of'=4
-'is the ip address'=5
-'is'=6
-=======
 'is the ip address'=2
 'is'=3
 'for'=4
 'Login Attempts from the Same Source'=5
 'of'=6
->>>>>>> Stashed changes
 'events occur'=7
 'having'=8
 'subcheck-Validation'=17

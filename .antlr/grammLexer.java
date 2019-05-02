@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-// Generated from C:/Users/yoa_a/Desktop/CompiladoresFase2\gramm.g4 by ANTLR 4.7.2
-=======
-// Generated from gramm.g4 by ANTLR 4.7.2
->>>>>>> Stashed changes
+// Generated from /home/alejandro/Documents/Escuela/8vo/Compiladores/proyecto/gramm.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -14,7 +10,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class grammLexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -31,37 +27,22 @@ public class grammLexer extends Lexer {
 		"DEFAULT_MODE"
 	};
 
-	private static String[] makeRuleNames() {
-		return new String[] {
-			"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "QUANTITATIVE", 
-			"OBJECT", "RELOP", "STATUS", "TIMEUNIT", "LOGICALOPERATOR", "STATUSUSER", 
-			"XML", "SUBCHECK", "INT", "ID", "WS", "IP"
-		};
-	}
-	public static final String[] ruleNames = makeRuleNames();
+	public static final String[] ruleNames = {
+		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "QUANTITATIVE", 
+		"OBJECT", "RELOP", "STATUS", "TIMEUNIT", "LOGICALOPERATOR", "STATUSUSER", 
+		"XML", "SUBCHECK", "INT", "ID", "WS", "IP"
+	};
 
-	private static String[] makeLiteralNames() {
-		return new String[] {
-<<<<<<< Updated upstream
-			null, "'if'", "'for'", "'Login Attempts from the Same Source'", "'of'", 
-			"'is the ip address'", "'is'", "'events occur'", "'having'", null, null, 
-			null, null, null, null, null, null, "'subcheck-Validation'"
-=======
-			null, "'if'", "'is the ip address'", "'is'", "'for'", "'Login Attempts from the Same Source'", 
-			"'of'", "'events occur'", "'having'", null, null, null, null, null, null, 
-			null, null, "'subcheck-Validation'"
->>>>>>> Stashed changes
-		};
-	}
-	private static final String[] _LITERAL_NAMES = makeLiteralNames();
-	private static String[] makeSymbolicNames() {
-		return new String[] {
-			null, null, null, null, null, null, null, null, null, "QUANTITATIVE", 
-			"OBJECT", "RELOP", "STATUS", "TIMEUNIT", "LOGICALOPERATOR", "STATUSUSER", 
-			"XML", "SUBCHECK", "INT", "ID", "WS", "IP"
-		};
-	}
-	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
+	private static final String[] _LITERAL_NAMES = {
+		null, "'if'", "'is the ip address'", "'is'", "'for'", "'Login Attempts from the Same Source'", 
+		"'of'", "'events occur'", "'having'", null, null, null, null, null, null, 
+		null, null, "'subcheck-Validation'"
+	};
+	private static final String[] _SYMBOLIC_NAMES = {
+		null, null, null, null, null, null, null, null, null, "QUANTITATIVE", 
+		"OBJECT", "RELOP", "STATUS", "TIMEUNIT", "LOGICALOPERATOR", "STATUSUSER", 
+		"XML", "SUBCHECK", "INT", "ID", "WS", "IP"
+	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
@@ -124,15 +105,9 @@ public class grammLexer extends Lexer {
 		"\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4"+
 		"\13\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22"+
 		"\t\22\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\3\2\3\2\3\2\3\3\3\3\3\3"+
-<<<<<<< Updated upstream
-		"\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3"+
-		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3"+
-=======
 		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3"+
 		"\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6"+
 		"\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3"+
->>>>>>> Stashed changes
 		"\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b"+
 		"\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3"+
 		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n"+
@@ -159,22 +134,6 @@ public class grammLexer extends Lexer {
 		"\3\2\2\2\2\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3\2\2"+
 		"\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2\2\2\2"+
 		"!\3\2\2\2\2#\3\2\2\2\2%\3\2\2\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\3-\3"+
-<<<<<<< Updated upstream
-		"\2\2\2\5\60\3\2\2\2\7\64\3\2\2\2\tX\3\2\2\2\13[\3\2\2\2\rm\3\2\2\2\17"+
-		"p\3\2\2\2\21}\3\2\2\2\23\u009f\3\2\2\2\25\u00be\3\2\2\2\27\u00e4\3\2\2"+
-		"\2\31\u0114\3\2\2\2\33\u012d\3\2\2\2\35\u0134\3\2\2\2\37\u0154\3\2\2\2"+
-		"!\u015c\3\2\2\2#\u015e\3\2\2\2%\u0173\3\2\2\2\'\u0178\3\2\2\2)\u017d\3"+
-		"\2\2\2+\u0183\3\2\2\2-.\7k\2\2./\7h\2\2/\4\3\2\2\2\60\61\7h\2\2\61\62"+
-		"\7q\2\2\62\63\7t\2\2\63\6\3\2\2\2\64\65\7N\2\2\65\66\7q\2\2\66\67\7i\2"+
-		"\2\678\7k\2\289\7p\2\29:\7\"\2\2:;\7C\2\2;<\7v\2\2<=\7v\2\2=>\7g\2\2>"+
-		"?\7o\2\2?@\7r\2\2@A\7v\2\2AB\7u\2\2BC\7\"\2\2CD\7h\2\2DE\7t\2\2EF\7q\2"+
-		"\2FG\7o\2\2GH\7\"\2\2HI\7v\2\2IJ\7j\2\2JK\7g\2\2KL\7\"\2\2LM\7U\2\2MN"+
-		"\7c\2\2NO\7o\2\2OP\7g\2\2PQ\7\"\2\2QR\7U\2\2RS\7q\2\2ST\7w\2\2TU\7t\2"+
-		"\2UV\7e\2\2VW\7g\2\2W\b\3\2\2\2XY\7q\2\2YZ\7h\2\2Z\n\3\2\2\2[\\\7k\2\2"+
-		"\\]\7u\2\2]^\7\"\2\2^_\7v\2\2_`\7j\2\2`a\7g\2\2ab\7\"\2\2bc\7k\2\2cd\7"+
-		"r\2\2de\7\"\2\2ef\7c\2\2fg\7f\2\2gh\7f\2\2hi\7t\2\2ij\7g\2\2jk\7u\2\2"+
-		"kl\7u\2\2l\f\3\2\2\2mn\7k\2\2no\7u\2\2o\16\3\2\2\2pq\7g\2\2qr\7x\2\2r"+
-=======
 		"\2\2\2\5\60\3\2\2\2\7B\3\2\2\2\tE\3\2\2\2\13I\3\2\2\2\rm\3\2\2\2\17p\3"+
 		"\2\2\2\21}\3\2\2\2\23\u009f\3\2\2\2\25\u00be\3\2\2\2\27\u00e4\3\2\2\2"+
 		"\31\u0114\3\2\2\2\33\u012d\3\2\2\2\35\u0134\3\2\2\2\37\u0154\3\2\2\2!"+
@@ -189,7 +148,6 @@ public class grammLexer extends Lexer {
 		"\\]\7\"\2\2]^\7v\2\2^_\7j\2\2_`\7g\2\2`a\7\"\2\2ab\7U\2\2bc\7c\2\2cd\7"+
 		"o\2\2de\7g\2\2ef\7\"\2\2fg\7U\2\2gh\7q\2\2hi\7w\2\2ij\7t\2\2jk\7e\2\2"+
 		"kl\7g\2\2l\f\3\2\2\2mn\7q\2\2no\7h\2\2o\16\3\2\2\2pq\7g\2\2qr\7x\2\2r"+
->>>>>>> Stashed changes
 		"s\7g\2\2st\7p\2\2tu\7v\2\2uv\7u\2\2vw\7\"\2\2wx\7q\2\2xy\7e\2\2yz\7e\2"+
 		"\2z{\7w\2\2{|\7t\2\2|\20\3\2\2\2}~\7j\2\2~\177\7c\2\2\177\u0080\7x\2\2"+
 		"\u0080\u0081\7k\2\2\u0081\u0082\7p\2\2\u0082\u0083\7i\2\2\u0083\22\3\2"+

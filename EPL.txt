@@ -1,3 +1,7 @@
 @Name' Blocked IP address'
+<<<<<<< Updated upstream
 select * from eParser_eventStream.win:time_batch(5 min)
+=======
+select * from eParser_eventStream.win:time_batch(1 min)
+>>>>>>> Stashed changes
 where (IP.equals(1.1.1.1))

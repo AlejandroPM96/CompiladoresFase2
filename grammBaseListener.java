@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 // Generated from C:/Users/yoa_a/Desktop/CompiladoresFase2\gramm.g4 by ANTLR 4.7.2
+=======
+// Generated from gramm.g4 by ANTLR 4.7.2
+>>>>>>> Stashed changes
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
