@@ -62,7 +62,6 @@ public class miListener extends grammBaseListener {
             operator1 = ctx.LOGICALOPERATOR(0).getText();
         } else {
             if (ctx.IP() != null) {
-
                 // Rule 2
                 ip = ctx.IP().getText();
             } else {
@@ -192,11 +191,30 @@ public class miListener extends grammBaseListener {
         int i = 0;
         // main id
         int id = 1;
-        if (ip != "") {
-
-        } else if (userStatus != "") {
-
-        } else {
+        if (ip != "") { //Rule 2
+            XML.add("\t<rule group=\"" + ruleGroup + "\" id =\"" + id + "\" name =\"Authorization Rule " + id + "\">");
+            int groupID = 1;
+            XML.add("\t\t<test group=\"" + subcheck + "\" id=\"" + groupID + "\" operator=\"" + operator1.toUpperCase()
+                    + "\">");
+            XML.add("\t\t\t<properties>");
+            int propertyID = 1;
+            XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"ip\" value=\"" + ip + " disable \"/>");
+            XML.add("\t\t\t</properties>");
+            XML.add("\t\t</test>");
+            XML.add("\t</rule>");
+        } else if (userStatus != "") { //Rule 3
+            XML.add("\t<rule group=\"" + ruleGroup + "\" id =\"" + id + "\" name =\"Authorization Rule " + id + "\">");
+            int groupID = 1;
+            XML.add("\t\t<test group=\"" + subcheck + "\" id=\"" + groupID + "\" operator=\"" + operator1.toUpperCase()
+                    + "\">");
+            XML.add("\t\t\t<properties>");
+            int propertyID = 1;
+            XML.add("\t\t\t\t<property id=\"" + propertyID++ + "\" name=\"userId\" value=\"" + userID +"\"/>");
+            XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"userStatus\" value=\"" + userStatus +"\"/>");
+            XML.add("\t\t\t</properties>");
+            XML.add("\t\t</test>");
+            XML.add("\t</rule>");
+        } else { //Rule 1
             XML.add("\t<rule group=\"" + ruleGroup + "\" id =\"" + id + "\" name =\"Authentication Rule " + id + "\">");
             int groupID = 1;
             XML.add("\t\t<test group=\"" + subcheck + "\" id=\"" + groupID + "\" operator=\"" + operator1.toUpperCase()
@@ -207,7 +225,6 @@ public class miListener extends grammBaseListener {
                     + qualifier.toUpperCase() + "\" value=\"" + subcheck + " " + status + "\"/>");
             XML.add("\t\t\t</properties>");
             XML.add("\t\t</test>");
-            // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             XML.add("\t\t<test group=\"" + concatenateObjects() + "\" id=\"" + (groupID + 1) + "\" operator=\""
                     + propertiesArray.get(groupID - 1).toUpperCase() + "\">");
             XML.add("\t\t\t<properties>");
@@ -217,7 +234,6 @@ public class miListener extends grammBaseListener {
             }
             XML.add("\t\t\t</properties>");
             XML.add("\t\t</test>");
-            // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             XML.add("\t</rule>");
         }
 
