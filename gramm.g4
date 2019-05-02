@@ -17,9 +17,9 @@ queryObject: 'Login Attempts from the Same Source';
 cond: QUANTITATIVE 'of' mainCondition;
 mainCondition: SUBCHECK STATUS;
 complement: RELOP INT TIMEUNIT events
-            |IP 'is the ip address'
+            |IP 'is the ip address' (LOGICALOPERATOR complement)*
             |ID 'is' STATUSUSER;
-events: RELOP INT 'events occur' (condition)+;
+events: RELOP INT 'events occur' (condition)*;
 condition: (LOGICALOPERATOR)* 'having' QUANTITATIVE OBJECT;
 
 

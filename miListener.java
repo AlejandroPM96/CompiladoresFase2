@@ -90,10 +90,14 @@ public class miListener extends grammBaseListener {
     @Override
     public void exitComplement(grammParser.ComplementContext ctx) {
         super.exitComplement(ctx); // number units events
-        if(ctx.RELOP()!=null) {
+        if (ctx.RELOP() != null) {
             relopArray.push(ctx.RELOP().getText());
             numberAux = Integer.parseInt(ctx.INT().getText());
             unitAux = ctx.TIMEUNIT().getText();
+            if (ctx.IP() != null) {
+                // Rule 2
+                ip = ctx.IP().getText();
+            }
         } else {
             if (ctx.IP() != null) {
                 // Rule 2
@@ -137,14 +141,14 @@ public class miListener extends grammBaseListener {
         if (ip != "") { // Rule 2
             EPL.add("@Name' " + "Blocked IP address" + "'");
 
-            EPL.add("select * from eParser_eventStream.win:time_batch(5 min)");
+            EPL.add("select * from " + ruleGroup);
 
-            EPL.add("where (IP.equals(" + ip + "))");
+            EPL.add("where (SRC_IP.equals(" + ip + "))");
 
         } else if (userStatus != "") { // Rule 3
             EPL.add("@Name' " + userStatus + " access: " + userID);
 
-            EPL.add("select * from eParser_eventStream.win:time_batch(5 min)");
+            EPL.add("select * from eParser_eventStream.win:time_batch(" + numberAux + " min)");
 
             EPL.add("where (user.equals(" + userID + "))");
 
@@ -211,6 +215,7 @@ public class miListener extends grammBaseListener {
         int id = 1;
         if (!ip.equals("")) { // Rule 2
             ruleGroup = "Blocked IP address";
+                    
             XML.add("\t<rule group=\"" + ruleGroup + "\" id =\"" + id + "\" name =\"Authorization Rule " + id + "\">");
         } else if (!userStatus.equals("")) { // Rule 3
             ruleGroup = "Unauthorized User";
@@ -224,16 +229,17 @@ public class miListener extends grammBaseListener {
                 + "\">");
         XML.add("\t\t\t<properties>");
         int propertyID = 1;
-        XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"" + subcheck + "\" qualifier=\""
+        XML.add("\t\t\t\t<p roperty id=\"" + propertyID + "\" name=\"" + subcheck + "\" qualifier=\""
                 + qualifier.toUpperCase() + "\" value=\"" + subcheck + " " + status + "\"/>");
         XML.add("\t\t\t</properties>");
         XML.add("\t\t</test>");
         if (!ip.equals("")){
-            XML.add("\t\t<test group=\"" + concatenateObjects() + "\" id=\"" + (groupID + 1) + "\">");
+            XML.add("\t\t<test group=\" "+ concatenateObjects() + "\" id=\"" + (groupID + 1) + "\">");
             XML.add("\t\t\t<properties>");
             XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"ip\" value=\"" + ip + " disable \"/>");
         } else {
             if( !userStatus.equals("") ) { // Rule 3
+                        
                 XML.add("\t\t<test group=\"" + concatenateObjects() + "\" id=\"" + (groupID + 1) + "\">");
                 XML.add("\t\t\t<properties>");
                 XML.add("\t\t\t\t<property id=\"" + propertyID++ + "\" name=\"userId\" value=\"" + userID + "\"/>");
