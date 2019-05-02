@@ -1,0 +1,3 @@
+@Name' Disabled access: AnaKaren
+select * from eParser_eventStream.win:time_batch(5 min)
+where (user.equals(AnaKaren))

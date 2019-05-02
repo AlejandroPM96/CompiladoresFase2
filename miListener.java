@@ -60,15 +60,6 @@ public class miListener extends grammBaseListener {
         if (ctx.LOGICALOPERATOR().size() > 0) {
             // Rule 1
             operator1 = ctx.LOGICALOPERATOR(0).getText();
-        } else {
-            if (ctx.IP() != null) {
-                // Rule 2
-                ip = ctx.IP().getText();
-            } else {
-                // Rule 3
-                userID = ctx.ID().getText();
-                userStatus = ctx.STATUSUSER().getText();
-            }
         }
     }
 
@@ -99,9 +90,20 @@ public class miListener extends grammBaseListener {
     @Override
     public void exitComplement(grammParser.ComplementContext ctx) {
         super.exitComplement(ctx); // number units events
-        relopArray.push(ctx.RELOP().getText());
-        numberAux = Integer.parseInt(ctx.INT().getText());
-        unitAux = ctx.TIMEUNIT().getText();
+        if(ctx.RELOP()!=null) {
+            relopArray.push(ctx.RELOP().getText());
+            numberAux = Integer.parseInt(ctx.INT().getText());
+            unitAux = ctx.TIMEUNIT().getText();
+        } else {
+            if (ctx.IP() != null) {
+                // Rule 2
+                ip = ctx.IP().getText();
+            } else {
+                // Rule 3
+                userID = ctx.ID().getText();
+                userStatus = ctx.STATUSUSER().getText();
+            }
+        }
     }
 
     @Override
@@ -207,51 +209,47 @@ public class miListener extends grammBaseListener {
         int i = 0;
         // main id
         int id = 1;
-        if (ip != "") { // Rule 2
+        if (!ip.equals("")) { // Rule 2
             ruleGroup = "Blocked IP address";
             XML.add("\t<rule group=\"" + ruleGroup + "\" id =\"" + id + "\" name =\"Authorization Rule " + id + "\">");
-            int groupID = 1;
-            XML.add("\t\t<test group=\"" + subcheck + "\" id=\"" + groupID + "\" operator=\"" + "equals" + "\">");
-            XML.add("\t\t\t<properties>");
-            int propertyID = 1;
-            XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"ip\" value=\"" + ip + " disable \"/>");
-            XML.add("\t\t\t</properties>");
-            XML.add("\t\t</test>");
-            XML.add("\t</rule>");
-        } else if (userStatus != "") { // Rule 3
+        } else if (!userStatus.equals("")) { // Rule 3
+            ruleGroup = "Unauthorized User";
             XML.add("\t<rule group=\"" + userStatus + " access: " + userID + "\" id =\"" + id + "\" name =\"Authorization Rule " + id + "\">");
-            int groupID = 1;
-            XML.add("\t\t<test group=\"" + subcheck + "\" id=\"" + groupID + "\" operator=\"" + "equals" + "\">");
-            XML.add("\t\t\t<properties>");
-            int propertyID = 1;
-            XML.add("\t\t\t\t<property id=\"" + propertyID++ + "\" name=\"userId\" value=\"" + userID + "\"/>");
-            XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"userStatus\" value=\"" + userStatus + "\"/>");
-            XML.add("\t\t\t</properties>");
-            XML.add("\t\t</test>");
-            XML.add("\t</rule>");
         } else { // Rule 1
             XML.add("\t<rule group=\"" + ruleGroup + "\" id =\"" + id + "\" name =\"Authentication Rule " + id + "\">");
-            int groupID = 1;
-            XML.add("\t\t<test group=\"" + subcheck + "\" id=\"" + groupID + "\" operator=\"" + operator1.toUpperCase()
-                    + "\">");
-            XML.add("\t\t\t<properties>");
-            int propertyID = 1;
-            XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"" + subcheck + "\" qualifier=\""
-                    + qualifier.toUpperCase() + "\" value=\"" + subcheck + " " + status + "\"/>");
-            XML.add("\t\t\t</properties>");
-            XML.add("\t\t</test>");
-            XML.add("\t\t<test group=\"" + concatenateObjects() + "\" id=\"" + (groupID + 1) + "\" operator=\""
-                    + propertiesArray.get(groupID - 1).toUpperCase() + "\">");
-            XML.add("\t\t\t<properties>");
-            while (i < propertiesCounter + 1) {
-                XML.add("\t\t\t\t" + relopAux(i));
-                i++;
-            }
-            XML.add("\t\t\t</properties>");
-            XML.add("\t\t</test>");
-            XML.add("\t</rule>");
-
         }
 
+        int groupID = 1;
+        XML.add("\t\t<test group=\"" + subcheck + "\" id=\"" + groupID + "\" operator=\"" + operator1.toUpperCase()
+                + "\">");
+        XML.add("\t\t\t<properties>");
+        int propertyID = 1;
+        XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"" + subcheck + "\" qualifier=\""
+                + qualifier.toUpperCase() + "\" value=\"" + subcheck + " " + status + "\"/>");
+        XML.add("\t\t\t</properties>");
+        XML.add("\t\t</test>");
+        if (!ip.equals("")){
+            XML.add("\t\t<test group=\"" + concatenateObjects() + "\" id=\"" + (groupID + 1) + "\">");
+            XML.add("\t\t\t<properties>");
+            XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"ip\" value=\"" + ip + " disable \"/>");
+        } else {
+            if( !userStatus.equals("") ) { // Rule 3
+                XML.add("\t\t<test group=\"" + concatenateObjects() + "\" id=\"" + (groupID + 1) + "\">");
+                XML.add("\t\t\t<properties>");
+                XML.add("\t\t\t\t<property id=\"" + propertyID++ + "\" name=\"userId\" value=\"" + userID + "\"/>");
+                XML.add("\t\t\t\t<property id=\"" + propertyID + "\" name=\"userStatus\" value=\"" + userStatus + "\"/>");
+            }else {
+                XML.add("\t\t<test group=\"" + concatenateObjects() + "\" id=\"" + (groupID + 1) + "\" operator=\""
+                        + propertiesArray.get(groupID - 1).toUpperCase() + "\">");
+                XML.add("\t\t\t<properties>");
+                while (i < propertiesCounter + 1) {
+                    XML.add("\t\t\t\t" + relopAux(i));
+                    i++;
+                }
+            }
+        }
+        XML.add("\t\t\t</properties>");
+        XML.add("\t\t</test>");
+        XML.add("\t</rule>");
     }
 }

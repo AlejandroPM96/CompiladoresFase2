@@ -1,0 +1,3 @@
+@Name' Blocked IP address'
+select * from eParser_eventStream.win:time_batch(5 min)
+where (IP.equals(1.1.1.1))
